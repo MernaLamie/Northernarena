@@ -18,6 +18,36 @@ namespace NorthArena.Controllers
            
         }
 
+
+        [HttpGet]
+        [Route("AdminLogin")]
+        public async Task<IActionResult> AdminLogin(string Admin,string Password)
+        {
+            try
+            {
+                if(!string.IsNullOrEmpty(Admin) && !string.IsNullOrEmpty(Password)) {
+                    if (Admin == "Northerarena@gmail.com" && Password == "Northerarena123456789_")
+                        return Ok();
+                    else
+                        return UnprocessableEntity("Email or Password is not Correct");
+
+                }
+                else
+                {
+                    return UnprocessableEntity("Email & password is Required");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+
+
+
+
         // GET: api/<WebsiteController>
         [HttpGet]
         public async Task<IActionResult> Get()
