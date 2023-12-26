@@ -27,7 +27,7 @@ namespace NorthArena.Models
         public DbSet<WebSiteData> WebsiteData { get; set; } = null;
 
         public DbSet<Sustainability> Sustainabilities { get; set; } = null;
-
+        public DbSet<TicketPrice> ticketPrices { get; set; } = null;
 
 
 

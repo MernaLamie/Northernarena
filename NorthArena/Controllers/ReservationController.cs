@@ -84,7 +84,48 @@ namespace NorthArena.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("PostTicketPrice")]
+        public async Task<IActionResult> Post([FromBody] TicketPrice ticketPrice)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                   
+                    await _Conntext.ticketPrices.AddAsync(ticketPrice);
+                    await _Conntext.SaveChangesAsync();
+                    return Ok(ticketPrice);
+                }
+                else
+                {
+                    return UnprocessableEntity(ModelState);
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
+        [HttpGet]
+        [Route("GetTicketPrice")]
+        public async Task<IActionResult> GetTicketPrices()
+        {
+            try
+            {
+                var ticketPricesLst = await _Conntext.ticketPrices.ToListAsync();
+                if (ticketPricesLst.Count() == 0)
+                    return Ok(new Reservation());
+                else
+                    return Ok(ticketPricesLst);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
 
 
 
