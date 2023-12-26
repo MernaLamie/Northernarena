@@ -45,21 +45,6 @@ namespace NorthArena.Controllers
 
 
 
-        // GET api/<ReservationController>/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
-        {
-            try
-            {
-                var Reservation = await _Conntext.Reservations.FindAsync(id);
-                return Ok(Reservation);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
         // POST api/<ReservationController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Reservation _Reservation)
@@ -129,54 +114,54 @@ namespace NorthArena.Controllers
 
 
 
-        // PUT api/<ReservationController>/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromBody] Reservation _updatedReservation)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
+        //// PUT api/<ReservationController>/5
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> Put([FromBody] Reservation _updatedReservation)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
                
-                    _Conntext.Update(_updatedReservation);
-                    await _Conntext.SaveChangesAsync();
-                    return Ok(_updatedReservation);
-                }
-                else
-                {
-                    return UnprocessableEntity(ModelState);
-                }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //            _Conntext.Update(_updatedReservation);
+        //            await _Conntext.SaveChangesAsync();
+        //            return Ok(_updatedReservation);
+        //        }
+        //        else
+        //        {
+        //            return UnprocessableEntity(ModelState);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
 
-        // DELETE api/<ReservationController>/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var DeletedReservation = await _Conntext.Reservations.FindAsync(id);
-                    _Conntext.Remove(DeletedReservation);
-                    await _Conntext.SaveChangesAsync();
-                    return Ok("");
-                }
-                else
-                {
-                    return UnprocessableEntity(ModelState);
-                }
+        //// DELETE api/<ReservationController>/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            var DeletedReservation = await _Conntext.Reservations.FindAsync(id);
+        //            _Conntext.Remove(DeletedReservation);
+        //            await _Conntext.SaveChangesAsync();
+        //            return Ok("");
+        //        }
+        //        else
+        //        {
+        //            return UnprocessableEntity(ModelState);
+        //        }
 
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
     }
 }
 

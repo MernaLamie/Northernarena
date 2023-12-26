@@ -39,20 +39,7 @@ namespace NorthArena.Controllers
 
 
 
-        // GET api/<ContactUsController>/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
-        {
-            try
-            {
-                var ContactUs = await _Conntext.ContactUs.FindAsync(id);
-                return Ok(ContactUs);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+      
 
         // POST api/<ContactUsController>
         [HttpPost]
@@ -82,54 +69,54 @@ namespace NorthArena.Controllers
 
 
 
-        // PUT api/<ContactUsController>/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromBody] ContactUs _updatedContactUs)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
+        //// PUT api/<ContactUsController>/5
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> Put([FromBody] ContactUs _updatedContactUs)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
 
-                    _Conntext.Update(_updatedContactUs);
-                    await _Conntext.SaveChangesAsync();
-                    return Ok(_updatedContactUs);
-                }
-                else
-                {
-                    return UnprocessableEntity(ModelState);
-                }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //            _Conntext.Update(_updatedContactUs);
+        //            await _Conntext.SaveChangesAsync();
+        //            return Ok(_updatedContactUs);
+        //        }
+        //        else
+        //        {
+        //            return UnprocessableEntity(ModelState);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
 
-        // DELETE api/<ContactUsController>/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var DeletedContactUs = await _Conntext.ContactUs.FindAsync(id);
-                    _Conntext.Remove(DeletedContactUs);
-                    await _Conntext.SaveChangesAsync();
-                    return Ok("");
-                }
-                else
-                {
-                    return UnprocessableEntity(ModelState);
-                }
+        //// DELETE api/<ContactUsController>/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            var DeletedContactUs = await _Conntext.ContactUs.FindAsync(id);
+        //            _Conntext.Remove(DeletedContactUs);
+        //            await _Conntext.SaveChangesAsync();
+        //            return Ok("");
+        //        }
+        //        else
+        //        {
+        //            return UnprocessableEntity(ModelState);
+        //        }
 
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
     }
 }
 

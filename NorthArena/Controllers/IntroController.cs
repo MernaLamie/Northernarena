@@ -45,20 +45,6 @@ namespace NorthArena.Controllers
 
 
 
-        // GET api/<IntroController>/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
-        {
-            try
-            {
-                var Intro = await _Conntext.Intro.FindAsync(id);
-                return Ok(Intro);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
 
         // POST api/<IntroController>
         [HttpPost]
@@ -68,8 +54,8 @@ namespace NorthArena.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var Intro =_mapper.Map<Intro>(_Intro);
-                    Intro.Image= (await upload.UploadImage(Request))[0];
+                    var Intro = _mapper.Map<Intro>(_Intro);
+                    Intro.Image = (await upload.UploadImage(Request))[0];
                     await _Conntext.Intro.AddAsync(Intro);
                     await _Conntext.SaveChangesAsync();
                     return Ok(Intro);
@@ -89,54 +75,55 @@ namespace NorthArena.Controllers
 
 
 
-        // PUT api/<IntroController>/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromBody] Intro _updatedIntro)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
+        //    // PUT api/<IntroController>/5
+        //    [HttpPut("{id}")]
+        //    public async Task<IActionResult> Put([FromBody] Intro _updatedIntro)
+        //    {
+        //        try
+        //        {
+        //            if (ModelState.IsValid)
+        //            {
 
-                    _Conntext.Update(_updatedIntro);
-                    await _Conntext.SaveChangesAsync();
-                    return Ok(_updatedIntro);
-                }
-                else
-                {
-                    return UnprocessableEntity(ModelState);
-                }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //                _Conntext.Update(_updatedIntro);
+        //                await _Conntext.SaveChangesAsync();
+        //                return Ok(_updatedIntro);
+        //            }
+        //            else
+        //            {
+        //                return UnprocessableEntity(ModelState);
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return BadRequest(ex.Message);
+        //        }
+        //    }
 
-        // DELETE api/<IntroController>/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var DeletedIntro = await _Conntext.Intro.FindAsync(id);
-                    _Conntext.Remove(DeletedIntro);
-                    await _Conntext.SaveChangesAsync();
-                    return Ok("");
-                }
-                else
-                {
-                    return UnprocessableEntity(ModelState);
-                }
+        //    // DELETE api/<IntroController>/5
+        //    [HttpDelete("{id}")]
+        //    public async Task<IActionResult> Delete(int id)
+        //    {
+        //        try
+        //        {
+        //            if (ModelState.IsValid)
+        //            {
+        //                var DeletedIntro = await _Conntext.Intro.FindAsync(id);
+        //                _Conntext.Remove(DeletedIntro);
+        //                await _Conntext.SaveChangesAsync();
+        //                return Ok("");
+        //            }
+        //            else
+        //            {
+        //                return UnprocessableEntity(ModelState);
+        //            }
 
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return BadRequest(ex.Message);
+        //        }
+        //    }
+        //}
     }
-}
 
+}

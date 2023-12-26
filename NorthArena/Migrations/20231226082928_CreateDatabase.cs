@@ -5,7 +5,7 @@
 namespace NorthArena.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateDb : Migration
+    public partial class CreateDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,10 +17,10 @@ namespace NorthArena.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TitleEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TitleAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DescriptionAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescriptionEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Subcategory = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    DescriptionEn = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,7 +35,9 @@ namespace NorthArena.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,11 +65,13 @@ namespace NorthArena.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NameEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NameAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TicketType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ChairNo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    FloorORClass = table.Column<int>(type: "int", nullable: false),
+                    Room = table.Column<int>(type: "int", nullable: true),
+                    ChairNo = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -80,13 +84,29 @@ namespace NorthArena.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SustainabilityQuotesEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SustainabilityQuotesAr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SustainabilityEnTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SustainabilityArTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SustainabilityEnQuotes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SustainabilityArQuotes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sustainabilities", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ticketPrices",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ticketPrices", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -123,6 +143,9 @@ namespace NorthArena.Migrations
 
             migrationBuilder.DropTable(
                 name: "Sustainabilities");
+
+            migrationBuilder.DropTable(
+                name: "ticketPrices");
 
             migrationBuilder.DropTable(
                 name: "WebsiteData");
