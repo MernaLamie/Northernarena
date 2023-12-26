@@ -102,54 +102,54 @@ namespace NorthArena.Controllers
 
 
 
-        //// PUT api/<WebsiteController>/5
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> Put([FromBody] WebSiteData _updatedWebsite)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
+        // PUT api/<WebsiteController>/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put([FromBody] WebSiteData _updatedWebsite)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
 
-        //            _Conntext.Update(_updatedWebsite);
-        //            await _Conntext.SaveChangesAsync();
-        //            return Ok(_updatedWebsite);
-        //        }
-        //        else
-        //        {
-        //            return UnprocessableEntity(ModelState);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
+                    _Conntext.Update(_updatedWebsite);
+                    await _Conntext.SaveChangesAsync();
+                    return Ok(_updatedWebsite);
+                }
+                else
+                {
+                    return UnprocessableEntity(ModelState);
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
-        //// DELETE api/<WebsiteController>/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Delete(int id)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            var DeletedWebsite = await _Conntext.WebsiteData.FindAsync(id);
-        //            _Conntext.Remove(DeletedWebsite);
-        //            await _Conntext.SaveChangesAsync();
-        //            return Ok("");
-        //        }
-        //        else
-        //        {
-        //            return UnprocessableEntity(ModelState);
-        //        }
+        // DELETE api/<WebsiteController>/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var DeletedWebsite = await _Conntext.WebsiteData.FindAsync(id);
+                    _Conntext.Remove(DeletedWebsite);
+                    await _Conntext.SaveChangesAsync();
+                    return Ok("");
+                }
+                else
+                {
+                    return UnprocessableEntity(ModelState);
+                }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
 

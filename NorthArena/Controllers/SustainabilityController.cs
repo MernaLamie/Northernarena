@@ -76,54 +76,54 @@ namespace NorthArena.Controllers
 
 
 
-        //// PUT api/<SustainabiltyController>/5
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> Put([FromBody] Sustainability _updatedSustainabilty)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
+        // PUT api/<SustainabiltyController>/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put([FromBody] Sustainability _updatedSustainabilty)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
 
-        //            _Conntext.Update(_updatedSustainabilty);
-        //            await _Conntext.SaveChangesAsync();
-        //            return Ok(_updatedSustainabilty);
-        //        }
-        //        else
-        //        {
-        //            return UnprocessableEntity(ModelState);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
+                    _Conntext.Update(_updatedSustainabilty);
+                    await _Conntext.SaveChangesAsync();
+                    return Ok(_updatedSustainabilty);
+                }
+                else
+                {
+                    return UnprocessableEntity(ModelState);
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
-        //// DELETE api/<SustainabiltyController>/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Delete(int id)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            var DeletedSustainabilty = await _Conntext.Sustainabilities.FindAsync(id);
-        //            _Conntext.Remove(DeletedSustainabilty);
-        //            await _Conntext.SaveChangesAsync();
-        //            return Ok("");
-        //        }
-        //        else
-        //        {
-        //            return UnprocessableEntity(ModelState);
-        //        }
+        // DELETE api/<SustainabiltyController>/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var DeletedSustainabilty = await _Conntext.Sustainabilities.FindAsync(id);
+                    _Conntext.Remove(DeletedSustainabilty);
+                    await _Conntext.SaveChangesAsync();
+                    return Ok("");
+                }
+                else
+                {
+                    return UnprocessableEntity(ModelState);
+                }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
 

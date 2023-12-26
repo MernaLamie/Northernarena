@@ -88,63 +88,63 @@ namespace NorthArena.Controllers
             }
         }
 
+   
+
+
+
+// PUT api/<AboutUsController>/5
+[HttpPut("{id}")]
+public async Task<IActionResult> Put([FromBody] AboutUS _updatedAboutUs)
+{
+    try
+    {
+        if (ModelState.IsValid)
+        {
+            //if (_updatedAboutUs.Image != null)
+            //{
+            //    var img = (await upload.UploadImage(Request))[0];
+               
+            //}
+
+            _Conntext.Update(_updatedAboutUs);
+            await _Conntext.SaveChangesAsync();
+            return Ok(_updatedAboutUs);
+        }
+        else
+        {
+            return UnprocessableEntity(ModelState);
+        }
+    }
+    catch (Exception ex)
+    {
+        return BadRequest(ex.Message);
     }
 }
 
+        // DELETE api/<AboutUsController>/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var DeletedAboutUs = await _Conntext.AboutUs.FindAsync(id);
+                    _Conntext.Remove(DeletedAboutUs);
+                    await _Conntext.SaveChangesAsync();
+                    return Ok("");
+                }
+                else
+                {
+                    return UnprocessableEntity(ModelState);
+                }
 
-//        // PUT api/<AboutUsController>/5
-//        [HttpPut("{id}")]
-//        public async Task<IActionResult> Put([FromBody] AboutUsDto _updatedAboutUs)
-//        {
-//            try
-//            {
-//                if (ModelState.IsValid)
-//                {
-//                    if (_updatedAboutUs.Image != null)
-//                    {
-//                        var img = (await upload.UploadImage(Request))[0];
-//                        _updatedAboutUs.Image = img;
-//                    }
-
-//                    _Conntext.Update(_updatedAboutUs);
-//                    await _Conntext.SaveChangesAsync();
-//                    return Ok(_updatedAboutUs);
-//                }
-//                else
-//                {
-//                    return UnprocessableEntity(ModelState);
-//                }
-//            }
-//            catch (Exception ex)
-//            {
-//                return BadRequest(ex.Message);
-//            }
-//        }
-
-//        // DELETE api/<AboutUsController>/5
-//        [HttpDelete("{id}")]
-//        public async Task<IActionResult> Delete(int id)
-//        {
-//            try
-//            {
-//                if (ModelState.IsValid)
-//                {
-//                    var DeletedAboutUs = await _Conntext.AboutUs.FindAsync(id);
-//                    _Conntext.Remove(DeletedAboutUs);
-//                    await _Conntext.SaveChangesAsync();
-//                    return Ok("");
-//                }
-//                else
-//                {
-//                    return UnprocessableEntity(ModelState);
-//                }
-
-//            }
-//            catch (Exception ex)
-//            {
-//                return BadRequest(ex.Message);
-//            }
-//        }
-//    }
-//}
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+    }
+}
 

@@ -124,6 +124,16 @@ namespace NorthArena.Migrations
                 {
                     table.PrimaryKey("PK_WebsiteData", x => x.Id);
                 });
+
+
+
+            migrationBuilder.InsertData("ticketPrices", columns: new[] { "Id", "price", "type" },
+             values: new object[] { "0", "VIP", "1500" });
+
+
+            migrationBuilder.InsertData("ticketPrices", columns: new[] { "Id", "price", "type" },
+             values: new object[] { "0", "Standard", "1000" });
+
         }
 
         /// <inheritdoc />
