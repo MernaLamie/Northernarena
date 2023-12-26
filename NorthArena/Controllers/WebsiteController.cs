@@ -55,6 +55,11 @@ namespace NorthArena.Controllers
             try
             {
                 var WebsiteLst = await _Conntext.WebsiteData.ToListAsync();
+                if (WebsiteLst.Count()==0)
+                {
+                    return Ok(new WebSiteData() {Address="",Email="",Fax="",Phone="" });
+                }
+                else
                 return Ok(WebsiteLst);
             }
             catch (Exception ex)
