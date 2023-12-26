@@ -29,7 +29,10 @@ namespace NorthArena.Controllers
             try
             {
                 var AboutUsLst = await _Conntext.AboutUs.ToListAsync();
-                return Ok(AboutUsLst);
+                if (AboutUsLst.Count()==0)
+                    return Ok(new AboutUS());
+                else
+                    return Ok(AboutUsLst);
             }
             catch (Exception ex)
             {
@@ -49,7 +52,10 @@ namespace NorthArena.Controllers
             try
             {
                 var AboutUs = await _Conntext.AboutUs.FindAsync(id);
-                return Ok(AboutUs);
+                if (AboutUs == null)
+                    return Ok(new AboutUS());
+                else
+                    return Ok(AboutUs);
             }
             catch (Exception ex)
             {

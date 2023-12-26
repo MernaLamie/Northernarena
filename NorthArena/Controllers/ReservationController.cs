@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NorthArena.Dtos;
 using NorthArena.Models;
 using System.Drawing;
 
@@ -28,7 +29,10 @@ namespace NorthArena.Controllers
             try
             {
                 var ReservationLst = await _Conntext.Reservations.ToListAsync();
-                return Ok(ReservationLst);
+                if (ReservationLst.Count() == 0)
+                    return Ok(new Reservation());
+                else
+                    return Ok(ReservationLst);
             }
             catch (Exception ex)
             {

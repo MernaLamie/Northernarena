@@ -29,7 +29,10 @@ namespace NorthArena.Controllers
             try
             {
                 var IntroLst = await _Conntext.Intro.ToListAsync();
-                return Ok(IntroLst);
+                if (IntroLst.Count() == 0)
+                    return Ok(new Intro());
+                else
+                    return Ok(IntroLst);
             }
             catch (Exception ex)
             {
