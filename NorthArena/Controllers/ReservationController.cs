@@ -30,7 +30,7 @@ namespace NorthArena.Controllers
             {
                 var ReservationLst = await _Conntext.Reservations.ToListAsync();
                 if (ReservationLst.Count() == 0)
-                    return Ok(new Reservation());
+                    return Ok(new List<Reservation>());
                 else
                     return Ok(ReservationLst);
             }
