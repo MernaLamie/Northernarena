@@ -11,9 +11,10 @@
         public String TicketType { get; set; }
 
         public int FloorORClass { get; set; }
-        public string? Room { get; set; }
+        public int? Room { get; set; }
+      
 
-        public string? ChairNo { get; set; }
+        public int? ChairNo { get; set; }
 
 
     }
