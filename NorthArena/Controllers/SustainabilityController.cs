@@ -30,7 +30,7 @@ namespace NorthArena.Controllers
             {
                 var SustainabiltyLst = await _Conntext.Sustainabilities.ToListAsync();
                 if (SustainabiltyLst.Count() == 0)
-                    return Ok(new Sustainability());
+                    return Ok(new List<Sustainability>());
                 else
                 return Ok(SustainabiltyLst);
             }

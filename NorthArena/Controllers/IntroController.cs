@@ -30,7 +30,7 @@ namespace NorthArena.Controllers
             {
                 var IntroLst = await _Conntext.Intro.ToListAsync();
                 if (IntroLst.Count() == 0)
-                    return Ok(new Intro());
+                    return Ok(new List<Intro>());
                 else
                     return Ok(IntroLst);
             }
