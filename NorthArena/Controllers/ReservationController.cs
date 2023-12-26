@@ -116,7 +116,7 @@ namespace NorthArena.Controllers
             {
                 var ticketPricesLst = await _Conntext.ticketPrices.ToListAsync();
                 if (ticketPricesLst.Count() == 0)
-                    return Ok(new Reservation());
+                    return Ok(new List<Reservation>());
                 else
                     return Ok(ticketPricesLst);
             }
