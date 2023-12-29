@@ -127,12 +127,12 @@ namespace NorthArena.Migrations
 
 
 
-            migrationBuilder.InsertData("ticketPrices", columns: new[] { "Id", "price", "type" },
-             values: new object[] { "0", "VIP", "1500" });
+            migrationBuilder.InsertData("ticketPrices", columns: new[] { "type", "Price" },
+             values: new object[] { "1500", "VIP" });
 
 
-            migrationBuilder.InsertData("ticketPrices", columns: new[] { "Id", "price", "type" },
-             values: new object[] { "0", "Standard", "1000" });
+            migrationBuilder.InsertData("ticketPrices", columns: new[] { "type", "Price" },
+             values: new object[] {"1000","Standard" });
 
         }
 
