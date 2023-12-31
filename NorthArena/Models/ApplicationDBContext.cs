@@ -13,7 +13,8 @@ namespace NorthArena.Models
         {
             if (!OptionsBuilder.IsConfigured)
             {
-                OptionsBuilder.UseSqlServer("Data Source=.;database=NorthernArena;Trusted_Connection=True;TrustServerCertificate=true;");
+                OptionsBuilder.UseSqlServer("Data Source=SQL8001.site4now.net;Initial Catalog=db_aa3795_northernarena;User Id=db_aa3795_northernarena_admin;Password=Projects123456;");
+
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
