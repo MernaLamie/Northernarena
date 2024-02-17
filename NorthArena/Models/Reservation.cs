@@ -8,11 +8,12 @@
         public decimal Price { get; set; }
         public string Phone { get; set; }
         public String TicketType { get; set; }
+        public String? TicketTypeAr { get; set; }
 
         public int FloorORClass { get; set; }
         public int? Room { get; set; }
       
-
+        public string SeatDirection { get; set; }
         public int? ChairNo { get; set; }
     }
 
